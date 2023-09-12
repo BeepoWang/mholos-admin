@@ -11,5 +11,48 @@
 - [Vue-Router](https://router.vuejs.org/)
 - [Pinia]()
 
-## 项目目录
+## 项目目录设置
+
+```
+
+│  
+├─.vscode
+│     extensions.json
+├─public
+│     vite.svg
+│
+├─src
+│  │  App.vue
+│  │  main.ts
+│  │
+│  ├─api
+│  ├─assets
+│  │      vue.svg
+│  │
+│  ├─components
+│  ├─config
+│  ├─directives
+│  ├─hooks
+│  ├─layout
+│  ├─locales
+│  ├─plugins
+│  ├─router
+│  ├─store
+│  ├─styles
+│  │      style.css
+│  │
+│  ├─utils
+│  └─views
+├─types
+│       vite-env.d.ts
+│ .gitignore
+│ index.html
+│ package.json
+│ pnpm-lock.yaml
+│ README.md
+│ tree.txt
+│ tsconfig.json
+│ vite.config.ts
+
+```
 
