@@ -1,17 +1,15 @@
-import { ConfigEnv, UserConfig, loadEnv } from 'vite'
-import setupVitePlugins from './src/plugins/vite'
-import path from 'path'
-
+import { ConfigEnv, UserConfig, loadEnv } from 'vite';
+import setupVitePlugins from './src/plugins/vite';
+import path from 'path';
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-
-  let env: Record<string, any> = {}
-  const root = process.cwd()
-  const isBuild = command === 'build'
+  let env: Record<string, any> = {};
+  const root = process.cwd();
+  const isBuild = command === 'build';
   if (isBuild) {
-    env = loadEnv((process.argv[3] === '--mode' ? process.argv[4] : process.argv[3]), root)
+    env = loadEnv(process.argv[3] === '--mode' ? process.argv[4] : process.argv[3], root);
   } else {
-    env = loadEnv(mode, root)
+    env = loadEnv(mode, root);
   }
 
   return {
@@ -40,5 +38,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         }
       }
     }
-  }
-}
+  };
+};

@@ -15,7 +15,7 @@
 
 ```
 
-│  
+│
 ├─.vscode
 │     extensions.json
 ├─public
@@ -45,14 +45,25 @@
 │  └─views
 ├─types
 │       vite-env.d.ts
-│ .gitignore
-│ index.html
-│ package.json
-│ pnpm-lock.yaml
-│ README.md
-│ tree.txt
-│ tsconfig.json
-│ vite.config.ts
+│  .env
+│  .env.dev
+│  .env.prod
+│  .env.test
+│  .eslintrc-auto-import.json
+│  .gitignore
+│  index.html
+│  package.json
+│  pnpm-lock.yaml
+│  README.md
+│  tree.txt
+│  tsconfig.json
+│  vite.config.ts
 
 ```
 
+## 项目规范
+
+- [EsLint]()
+- [Prettier]()
+- [StyleLint]()
+-
