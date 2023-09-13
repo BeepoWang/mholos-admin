@@ -12,6 +12,7 @@
     <div>
       <p class="test text-18">特殊特</p>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 

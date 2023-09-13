@@ -40,7 +40,7 @@ const setupVitePlugins = () => {
 
     AutoImport({
       dts: 'types/auto-imports.d.ts',
-      imports: ['vue'],
+      imports: ['vue', 'vue-router'],
       eslintrc: {
         enabled: true
       }
