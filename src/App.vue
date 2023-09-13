@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAppStore } from './store/modules/app';
+
+const appStore = useAppStore();
+const { collapse } = storeToRefs(appStore);
+</script>
 
 <template>
   <div>
@@ -10,7 +15,7 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
     <div>
-      <p class="test text-18">特殊特</p>
+      <p class="test text-18">特殊特 {{ collapse }}</p>
     </div>
     <router-view></router-view>
   </div>
