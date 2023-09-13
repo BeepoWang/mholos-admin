@@ -1,16 +1,17 @@
 import vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import Components from 'unplugin-vue-components/vite';
+import Unocss from 'unocss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
-import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import Components from 'unplugin-vue-components/vite';
 
 const setupVitePlugins = () => {
   return [
     vue(),
-
     VueJsx(),
+    Unocss(),
 
     Icons({
       compiler: 'vue3',

@@ -20,6 +20,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         '@': path.resolve(__dirname, './src')
       }
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "./src/styles/variables.scss";',
+          javascriptEnabled: true
+        }
+      }
+    },
     server: {
       host: true
     },
