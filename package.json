@@ -17,6 +17,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@iconify-json/carbon": "^1.1.21",
     "@iconify-json/mdi": "^1.1.54",
     "@iconify-json/ri": "^1.1.12",
@@ -28,6 +29,7 @@
     "@unocss/preset-rem-to-px": "^0.55.7",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "axios": "^1.5.0",
     "element-plus": "^2.3.12",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",

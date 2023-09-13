@@ -7,6 +7,8 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '@element-plus/icons-vue'
+
 interface ImportMetaEnv {
   VITE_APP_TITLE: string
   VITE_OUTPUT_DIR: string
