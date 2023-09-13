@@ -6,6 +6,7 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 const setupVitePlugins = () => {
   return [
@@ -34,7 +35,8 @@ const setupVitePlugins = () => {
         IconsResolver({
           prefix: 'icon',
           customCollections: ['local']
-        })
+        }),
+        ElementPlusResolver()
       ]
     }),
 
@@ -43,7 +45,8 @@ const setupVitePlugins = () => {
       imports: ['vue', 'vue-router', 'pinia'],
       eslintrc: {
         enabled: true
-      }
+      },
+      resolvers: [ElementPlusResolver()]
     })
   ];
 };

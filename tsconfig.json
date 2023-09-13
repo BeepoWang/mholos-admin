@@ -22,7 +22,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
 
-    "baseUrl": "/",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
@@ -34,6 +34,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "types/*.d.ts"
   ]
 }

@@ -28,6 +28,7 @@
     "@unocss/preset-rem-to-px": "^0.55.7",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "element-plus": "^2.3.12",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

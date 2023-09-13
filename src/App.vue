@@ -1,28 +1,16 @@
 <script setup lang="ts">
-import { useAppStore } from './store/modules/app';
+import { ConfigProviderProps } from 'element-plus';
 
-const appStore = useAppStore();
-const { collapse } = storeToRefs(appStore);
+const elConfig = ref<Partial<ConfigProviderProps>>({
+  size: 'default',
+  message: {
+    max: 3
+  }
+});
 </script>
 
 <template>
-  <div>
-    <icon-local-logo class="w-50px h-50px" />
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-    <div>
-      <p class="test text-18">特殊特 {{ collapse }}</p>
-    </div>
+  <ElConfigProvider :size="elConfig.size" :message="elConfig.message">
     <router-view></router-view>
-  </div>
+  </ElConfigProvider>
 </template>
-
-<style scoped lang="scss">
-.test {
-  color: $theme-color;
-}
-</style>
