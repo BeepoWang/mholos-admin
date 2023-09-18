@@ -7,12 +7,21 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import { resolve } from 'path';
 
 const setupVitePlugins = () => {
+  console.log(resolve(__dirname, '../../locales/**'));
   return [
     vue(),
     VueJsx(),
     Unocss(),
+
+    VueI18nPlugin({
+      runtimeOnly: true,
+      compositionOnly: true,
+      include: [resolve(__dirname, '../../locales/**')]
+    }),
 
     Icons({
       compiler: 'vue3',

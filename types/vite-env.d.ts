@@ -18,3 +18,9 @@ interface ImportMetaEnv {
   VITE_DROP_CONSOLE: string
   VITE_SOURCEMAP: string
 }
+
+declare global {
+  interface ImportMeta {
+    readonly env: ImportMetaEnv
+  }
+}

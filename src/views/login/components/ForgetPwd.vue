@@ -1,29 +1,29 @@
 <template>
   <div class="login-forget">
-    <p class="font-700 text-26px mb-30px">忘记密码 🔒</p>
+    <p class="font-700 text-26px mb-30px">{{ t('forget.forget') }} 🔒</p>
     <el-form
       ref="forgetFormRef"
       :model="forgetForm"
       :rules="rules"
       size="large"
-      label-width="70px"
+      label-width="140px"
       label-position="left"
     >
-      <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="t('register.email')" prop="email">
         <el-input
           v-model="forgetForm.email"
-          placeholder="请输入邮箱"
+          :placeholder="t('register.emailPlaceholder')"
           autocomplete="off"
           clearable
         />
       </el-form-item>
-      <el-form-item label="验证码" prop="code">
+      <el-form-item :label="t('login.code')" prop="code">
         <div class="flex-center w-full">
           <el-input
             v-model="forgetForm.code"
-            placeholder="请注意查看邮箱验证码"
+            :placeholder="t('register.codePlaceholder')"
             clearable
-            class="w-60%! mr-15"
+            class="w-65%! mr-15"
             autocomplete="off"
           />
           <el-button type="primary" plain :disabled="isSend" @click="sendEmailCode">
@@ -31,11 +31,11 @@
           </el-button>
         </div>
       </el-form-item>
-      <el-form-item label="新密码" prop="password">
+      <el-form-item :label="t('forget.newPwd')" prop="password">
         <el-input
           type="password"
           v-model="forgetForm.password"
-          placeholder="密码要求6-18位,且包含数字、字母"
+          :placeholder="t('register.passwordPlaceholder')"
           autocomplete="off"
           clearable
         />
@@ -50,10 +50,10 @@
         :loading="buttonLoading"
         @click="confirmClick(forgetFormRef)"
       >
-        确认
+        {{ t('common.confirm') }}
       </el-button>
       <p class="text-center cursor-pointer text-#2080f0 pt-15px text-14px" @click="signIn">
-        去登陆
+        {{ t('forget.login') }}
       </p>
     </div>
   </div>
@@ -63,6 +63,10 @@
 import { fetchForgetPasswordCode, fetchResetPassword } from '@/api/login';
 import { useCutDown } from '@/hooks/useCutDown';
 import { FormInstance, FormRules } from 'element-plus';
+
+import { useI18n } from '@/hooks/useI18n';
+
+const { t } = useI18n();
 
 const signIn = inject<() => void>('signIn')!;
 
@@ -74,20 +78,20 @@ const forgetForm = ref({
   password: ''
 });
 const rules = ref<FormRules<typeof forgetForm>>({
-  code: { required: true, message: '请输入邮箱验证码', trigger: 'blur' },
+  code: { required: true, message: t('common.required'), trigger: 'blur' },
   email: [
     {
       type: 'email',
       required: true,
-      message: '请设置正确的邮箱地址',
+      message: t('common.required'),
       trigger: 'blur'
     }
   ],
   password: [
-    { required: true, message: '请设置登录密码', trigger: 'blur' },
+    { required: true, message: t('common.required'), trigger: 'blur' },
     {
       pattern: /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{6,16}/,
-      message: '密码要求6-18位,且包含数字、字母',
+      message: t('register.passwordPlaceholder'),
       trigger: 'blur'
     }
   ]
@@ -103,7 +107,7 @@ const confirmClick = (formEl: FormInstance | undefined) => {
       const { email, code, password } = forgetForm.value;
       const res = await fetchResetPassword({ email, emailCode: code, password });
       if (res.responseCode === 0) {
-        ElMessage.success('密码重置成功,快去登录吧~');
+        ElMessage.success(t('forget.resetSuccTips'));
         signIn();
       }
     })
@@ -125,7 +129,7 @@ const sendEmailCode = () => {
       const { email } = forgetForm.value;
       const res = await fetchForgetPasswordCode({ email });
       if (res.responseCode === 0) {
-        ElMessage.success('验证码发送成功,请注意查收');
+        ElMessage.success(t('forget.sendCodeSuccTips'));
         setCountdown();
       } else {
         console.log(res);

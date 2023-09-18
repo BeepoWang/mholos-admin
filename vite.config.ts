@@ -31,12 +31,21 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       host: true
     },
+    optimizeDeps: {
+      exclude: [
+        '@iconify/utils/lib/loader/fs',
+        '@iconify/utils/lib/loader/install-pkg',
+        '@iconify/utils/lib/loader/node-loader',
+        '@iconify/utils/lib/loader/node-loaders'
+      ],
+      include: []
+    },
     build: {
       minify: 'terser',
       outDir: env.VITE_OUTPUT_DIR || 'dist',
       sourcemap: env.VITE_SOURCEMAP === 'true' ? 'inline' : false,
       assetsInlineLimit: 8 * 1024,
-      chunkSizeWarningLimit: 1500,
+      chunkSizeWarningLimit: 1024,
       cssCodeSplit: true,
       emptyOutDir: true,
       terserOptions: {
@@ -44,6 +53,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           drop_console: env.VITE_DROP_CONSOLE,
           drop_debugger: env.VITE_DROP_DEBUGGER
         }
+      },
+      rollupOptions: {
+        external: [
+          '@iconify/utils/lib/loader/fs',
+          '@iconify/utils/lib/loader/install-pkg',
+          '@iconify/utils/lib/loader/node-loader',
+          '@iconify/utils/lib/loader/node-loaders'
+        ]
       }
     }
   };

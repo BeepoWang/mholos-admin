@@ -1,5 +1,8 @@
 <template>
   <div class="login">
+    <div class="login-lang">
+      <LocaleDropdown></LocaleDropdown>
+    </div>
     <div class="login-card">
       <transition mode="out-in">
         <components :is="components"></components>
@@ -49,8 +52,14 @@ provide('signIn', () => (loginType.value = 'signIn'));
   align-items: center;
   justify-content: end;
 
+  &-lang {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+
   &-card {
-    width: 30%;
+    width: 40%;
     min-height: 35%;
     padding: 35px;
     margin-right: 10%;

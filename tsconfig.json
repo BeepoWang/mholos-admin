@@ -26,7 +26,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client"]
+    "types": ["@intlify/unplugin-vue-i18n/types", "vite/client", "element-plus/global"]
   },
   "include": [
     "vite.config.ts",

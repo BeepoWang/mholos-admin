@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { LocaleDropdown } from '@/components/LocaleDropdown';
 import { useAppStore } from '@/store/modules/app';
+import { useI18n } from '@/hooks/useI18n';
 
 const appStore = useAppStore();
 const { collapse } = storeToRefs(appStore);
+
+const { t } = useI18n();
 
 const showMessage = () => {
   ElMessage.error('hello world');
@@ -18,10 +22,13 @@ const showMessage = () => {
     <a href="https://vuejs.org/" target="_blank">
       <img src="@/assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
-    <div>
-      <p class="test text-18">特殊特 {{ collapse }}</p>
-    </div>
-    <el-button type="danger" @click="showMessage">test</el-button>
+
+    <el-button type="danger" @click="showMessage">{{ t('login.usernamePlaceholder') }}</el-button>
+    <LocaleDropdown></LocaleDropdown>
+
+    <p class="test text-18">{{ t('login.signInTitle') }}</p>
+
+    <p>{{ collapse }}</p>
   </div>
 </template>
 

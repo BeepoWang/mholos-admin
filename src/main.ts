@@ -6,11 +6,17 @@ import App from './App.vue';
 import { setupRouter } from './router';
 import { setupStore } from './store';
 import { setupElementPlus } from './plugins/elementPlus';
+import { setupI18n } from './plugins/vueI18n';
 
-const app = createApp(App);
+const setupAll = async () => {
+  const app = createApp(App);
 
-setupRouter(app);
-setupStore(app);
-setupElementPlus(app);
+  await setupI18n(app);
+  setupRouter(app);
+  setupStore(app);
+  setupElementPlus(app);
 
-app.mount('#app');
+  app.mount('#app');
+};
+
+setupAll();

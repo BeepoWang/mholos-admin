@@ -68,4 +68,7 @@
 - [StyleLint]()
 - [Husky]()
 
-##
+## 国际化
+
+- [vue-i18n]()
+- [@intlify/unplugin-vue-i18n](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n)

@@ -1,47 +1,47 @@
 <template>
   <div class="login-sign-up">
-    <p class="font-700 text-26px mb-30px">加入我们 👋🏻</p>
+    <p class="font-700 text-26px mb-30px">{{ t('register.join') }} 👋🏻</p>
     <el-form
       ref="signUpFormRef"
       :model="signUpForm"
       :rules="rules"
       size="large"
-      label-width="70px"
+      label-width="140px"
       label-position="left"
     >
-      <el-form-item label="用户名" prop="name">
+      <el-form-item :label="t('register.username')" prop="name">
         <el-input
           v-model="signUpForm.name"
-          placeholder="请设置用户名"
+          :placeholder="t('register.usernamePlaceholder')"
           autocomplete="off"
           clearable
         />
       </el-form-item>
-      <el-form-item label="邮箱" prop="email">
+      <el-form-item :label="t('register.email')" prop="email">
         <el-input
           v-model="signUpForm.email"
-          placeholder="请设置邮箱,将作为默认登陆账号"
+          :placeholder="t('register.emailPlaceholder')"
           autocomplete="off"
           clearable
         />
       </el-form-item>
-      <el-form-item label="验证码" prop="emailCode">
+      <el-form-item :label="t('login.code')" prop="emailCode">
         <div class="flex-center w-full">
           <el-input
             v-model="signUpForm.emailCode"
-            placeholder="请注意查看邮箱验证码"
+            :placeholder="t('register.codePlaceholder')"
             autocomplete="off"
             clearable
-            class="w-60%! mr-15"
+            class="w-65%! mr-15"
           />
           <el-button type="primary" plain :disabled="isSend" @click="sendEmailCode">
             {{ codeTips }}
           </el-button>
         </div>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item :label="t('register.password')" prop="password">
         <el-input
-          placeholder="密码要求6-18位,且包含数字、字母"
+          :placeholder="t('register.passwordPlaceholder')"
           show-password
           v-model="signUpForm.password"
           autocomplete="off"
@@ -58,11 +58,12 @@
         @click="registerClick(signUpFormRef)"
         :loading="buttonLoading"
       >
-        注册
+        {{ t('register.register') }}
       </el-button>
       <p class="text-center text-14px text-#909399 pt-10px">
-        <span>已经有帐号?</span>
-        <span class="cursor-pointer text-#2080f0" @click="signIn">去登陆</span>
+        <span class="cursor-pointer text-#2080f0" @click="signIn">
+          {{ t('register.hasUser') }}</span
+        >
       </p>
     </div>
   </div>
@@ -73,7 +74,9 @@ import { fetchMailCode, fetchRegister } from '@/api/login';
 import { useCutDown } from '@/hooks/useCutDown';
 import { FormInstance, FormRules } from 'element-plus';
 import { validateEmail } from '@/utils/validate';
+import { useI18n } from '@/hooks/useI18n';
 
+const { t } = useI18n();
 const signIn = inject<() => void>('signIn');
 
 const buttonLoading = ref(false);
@@ -87,23 +90,23 @@ const signUpForm = ref({
 });
 
 const rules = ref<FormRules<typeof signUpForm>>({
-  name: { required: true, max: 20, message: '请设置用户名', trigger: 'blur' },
-  emailCode: { required: true, message: '请输入邮箱验证码', trigger: 'blur' },
-  departmentId: { required: true, message: '请选择归属部门', trigger: 'blur' },
+  name: { required: true, max: 20, message: t('common.required'), trigger: 'blur' },
+  emailCode: { required: true, message: t('common.required'), trigger: 'blur' },
+  departmentId: { required: true, message: t('common.required'), trigger: 'blur' },
   email: [
     {
       type: 'email',
       required: true,
-      message: '请设置正确的邮箱地址',
+      message: t('common.required'),
       trigger: 'blur'
     },
     { asyncValidator: validateEmail, trigger: 'blur' }
   ],
   password: [
-    { required: true, message: '请设置登录密码', trigger: 'blur' },
+    { required: true, message: t('common.required'), trigger: 'blur' },
     {
       pattern: /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{6,18}/,
-      message: '密码要求6-18位,且包含数字、字母',
+      message: t('register.passwordPlaceholder'),
       trigger: 'blur'
     }
   ]
