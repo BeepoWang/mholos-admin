@@ -88,7 +88,7 @@ const login = (formEl: FormInstance | undefined) => {
     try {
       const res = await authStore.userLogin(signInForm.value);
       if (res.responseCode === 0) {
-        ElMessage.success('login.succTips');
+        ElMessage.success(t('login.succTips'));
         router.push({ path: '/' });
       }
     } catch (error) {
