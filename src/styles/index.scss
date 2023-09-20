@@ -2,6 +2,15 @@
 @import './mixin';
 @import './variables';
 
+:root {
+  --transition-time-02: 0.2s;
+  --top-header-hover-color: #f6f6f6;
+  --top-header-text-color: 'inherit';
+
+  --logo-height: 50px;
+  --top-tool-height: var(--logo-height);
+}
+
 html body,
 #app {
   position: relative;

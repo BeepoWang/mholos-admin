@@ -3,7 +3,19 @@ export default {
     required: 'This is required',
     getCode: 'Get Code',
     resend: 'Resend',
-    confirm: 'Confirm'
+    confirm: 'Confirm',
+    back: 'Back',
+    cancel: 'Cancel',
+    setting: 'Personal Settings',
+    logout: 'Login out',
+    update: 'Update Password',
+    reminder: 'Reminder',
+    loginOutMessage: 'Exit the system?'
+  },
+  size: {
+    default: 'Default',
+    large: 'Large',
+    small: 'Small'
   },
   login: {
     signInTitle: 'Sign In',
@@ -21,6 +33,8 @@ export default {
     hasUser: 'Existing account? Go to login',
     join: 'Join Us',
 
+    account: 'Account',
+    accountPlaceholder: 'Please input account',
     email: 'Email',
     emailPlaceholder: 'Please set an email as the default login account',
     username: 'Username',

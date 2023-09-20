@@ -19,21 +19,16 @@ const setLang = (lang: LocaleType) => {
 </script>
 
 <template>
-  <el-dropdown trigger="click" @command="setLang">
-    <span> <icon-ion-language-sharp class="text-18 cursor-pointer" /> </span>
-    <template #dropdown>
-      <el-dropdown-menu>
-        <el-dropdown-item v-for="item in langMap" :key="item.lang" :command="item.lang">
-          {{ item.name }}
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </template>
-  </el-dropdown>
-  <div></div>
+  <div>
+    <el-dropdown trigger="click" @command="setLang">
+      <icon-ion-language-sharp class="text-18" />
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item v-for="item in langMap" :key="item.lang" :command="item.lang">
+            {{ item.name }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+  </div>
 </template>
-
-<style lang="scss" scoped>
-.locale-dropdown {
-  height: auto;
-}
-</style>

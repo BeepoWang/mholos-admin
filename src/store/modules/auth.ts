@@ -76,6 +76,7 @@ export const useAuthStore = defineStore('Auth', {
         return Promise.reject(res);
       }
     },
+
     logout() {}
   }
 });

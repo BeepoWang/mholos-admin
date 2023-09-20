@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ConfigProviderProps } from 'element-plus';
+import { useAppStore } from '@/store/modules/app';
+
+const appStore = useAppStore();
+
+const currentSize = computed(() => appStore.getCurrentSize);
 
 const elConfig = ref<Partial<ConfigProviderProps>>({
-  size: 'default',
   message: {
     max: 3
   }
@@ -10,7 +14,7 @@ const elConfig = ref<Partial<ConfigProviderProps>>({
 </script>
 
 <template>
-  <ElConfigProvider :size="elConfig.size" :message="elConfig.message">
+  <ElConfigProvider :size="currentSize" :message="elConfig.message">
     <router-view></router-view>
   </ElConfigProvider>
 </template>

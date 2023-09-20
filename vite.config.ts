@@ -12,6 +12,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     env = loadEnv(mode, root);
   }
 
+  console.log('env', env);
+
   return {
     base: env.VITE_BASE_PUBLIC_PATH,
     plugins: setupVitePlugins(),

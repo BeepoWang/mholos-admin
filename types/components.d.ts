@@ -7,8 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Breadcrumb: typeof import('./../src/components/Breadcrumb/src/Breadcrumb.vue')['default']
+    Collapse: typeof import('./../src/components/Collapse/src/Collapse.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -17,8 +21,18 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     IconIonLanguageSharp: typeof import('~icons/ion/language-sharp')['default']
     IconLocalLogo: typeof import('~icons/local/logo')['default']
+    IconMdiFormatSize: typeof import('~icons/mdi/format-size')['default']
+    IconRiFullscreenExitFill: typeof import('~icons/ri/fullscreen-exit-fill')['default']
+    IconRiFullscreenFill: typeof import('~icons/ri/fullscreen-fill')['default']
+    IconRiMenuFoldFill: typeof import('~icons/ri/menu-fold-fill')['default']
+    IconRiMenuUnfoldFill: typeof import('~icons/ri/menu-unfold-fill')['default']
     LocaleDropdown: typeof import('./../src/components/LocaleDropdown/src/LocaleDropdown.vue')['default']
+    PersonalSetting: typeof import('./../src/components/UserInfo/src/components/PersonalSetting.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScreenFull: typeof import('./../src/components/ScreenFull/src/ScreenFull.vue')['default']
+    SizeDropdown: typeof import('./../src/components/SizeDropdown/src/SizeDropdown.vue')['default']
+    UpdatePassword: typeof import('./../src/components/UserInfo/src/components/UpdatePassword.vue')['default']
+    UserInfo: typeof import('./../src/components/UserInfo/src/UserInfo.vue')['default']
   }
 }

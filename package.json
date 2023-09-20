@@ -11,7 +11,10 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "lint:style": "stylelint  \"./**/*.{css,scss,vue,html}\" --fix",
     "lint:format": "prettier --write \"./**/*.{vue,ts,js,css,scss,html,json,tsx,md}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preview:dev": "vite preview --mode dev",
+    "preview:prod": "vite preview --mode prod",
+    "preview:text": "vite preview --mode test"
   },
   "dependencies": {
     "vue": "^3.3.4"
@@ -31,6 +34,7 @@
     "@unocss/preset-rem-to-px": "^0.55.7",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vueuse/core": "^10.4.1",
     "axios": "^1.5.0",
     "element-plus": "^2.3.12",
     "eslint": "^8.49.0",

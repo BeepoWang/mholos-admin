@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { LocaleDropdown } from '@/components/LocaleDropdown';
-import { useAppStore } from '@/store/modules/app';
 import { useI18n } from '@/hooks/useI18n';
-
-const appStore = useAppStore();
-const { collapse } = storeToRefs(appStore);
+import { ElMessage } from 'element-plus';
+import { ScreenFull } from '@/components/ScreenFull';
+import { SizeDropdown } from '@/components/SizeDropdown';
+import { Collapse } from '@/components/Collapse';
+import { UserInfo } from '@/components/UserInfo';
 
 const { t } = useI18n();
 
@@ -15,20 +16,21 @@ const showMessage = () => {
 
 <template>
   <div>
-    <icon-local-logo class="w-50px h-50px" />
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="@/assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <div class="h-[var(--top-tool-height)] relative flex items-center justify-between">
+      <div class="h-full flex items-center">
+        <Collapse class="custom-hover"></Collapse>
+      </div>
+      <div class="h-full flex items-center">
+        <ScreenFull class="custom-hover"></ScreenFull>
+        <LocaleDropdown class="custom-hover"></LocaleDropdown>
+        <SizeDropdown class="custom-hover"></SizeDropdown>
+        <UserInfo class="custom-hover"></UserInfo>
+      </div>
+    </div>
 
     <el-button type="danger" @click="showMessage">{{ t('login.usernamePlaceholder') }}</el-button>
-    <LocaleDropdown></LocaleDropdown>
 
     <p class="test text-18">{{ t('login.signInTitle') }}</p>
-
-    <p>{{ collapse }}</p>
   </div>
 </template>
 

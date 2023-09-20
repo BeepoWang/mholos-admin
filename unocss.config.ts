@@ -5,7 +5,8 @@ import {
   presetIcons,
   presetAttributify,
   transformerVariantGroup,
-  transformerDirectives
+  transformerDirectives,
+  toEscapedSelector as e
 } from 'unocss';
 import presetRemToPx from '@unocss/preset-rem-to-px';
 
@@ -27,5 +28,31 @@ export default defineConfig({
       }
     })
   ],
-  transformers: [transformerVariantGroup(), transformerDirectives()]
+  transformers: [transformerVariantGroup(), transformerDirectives()],
+  rules: [
+    [
+      /^custom-hover$/,
+      // eslint-disable-next-line no-empty-pattern
+      ([], { rawSelector }) => {
+        const selector = e(rawSelector);
+        return `
+${selector} {
+  display: flex;
+  height: 100%;
+  padding: 1px 10px 0;
+  cursor: pointer;
+  align-items: center;
+  transition: background var(--transition-time-02);
+}
+/* you can have multiple rules */
+${selector}:hover {
+  background-color: var(--top-header-hover-color);
+}
+.dark ${selector}:hover {
+  background-color: var(--el-bg-color-overlay);
+}
+`;
+      }
+    ]
+  ]
 });
