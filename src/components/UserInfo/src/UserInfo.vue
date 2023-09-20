@@ -13,7 +13,6 @@ const updateVisible = ref(false);
 const settingVisible = ref(false);
 
 const handleCommand = (command: string) => {
-  console.log('command', command);
   if (command === 'update') {
     updateVisible.value = true;
   } else if (command === 'user') {

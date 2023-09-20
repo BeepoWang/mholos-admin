@@ -22,9 +22,10 @@ export default {
     login: 'Sign In',
     usernamePlaceholder: 'Please input email',
     passwordPlaceholder: 'Please input password',
-    forgetPassword: 'Forget password',
+    forgetPassword: 'Forget password?',
     registerTips: 'Create new account',
     code: 'Verification code',
+
     codePlaceholder: 'Please input verification code',
     succTips: 'Login successful, welcome back~'
   },
@@ -46,10 +47,15 @@ export default {
     succTips: 'Register successful~'
   },
   forget: {
+    title: 'Update Password',
     login: 'Go to login',
     forget: 'Forgot Password',
     newPwd: 'New Password',
+    oldPwd: 'Old Password',
+    emailPlaceholder: 'Please input email',
+    oldPwdPlaceholder: 'Please input old password',
     resetSuccTips: 'Password reset successful, go log in now~',
-    sendCodeSuccTips: 'The verification code was successfully sent. Please check it carefully'
+    sendCodeSuccTips: 'The verification code was successfully sent. Please check it carefully',
+    updateSuccTips: 'Password modification successful, go log in now~'
   }
 };
