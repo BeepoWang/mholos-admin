@@ -57,5 +57,8 @@ export default {
     resetSuccTips: '密码重置成功,快去登录吧~',
     sendCodeSuccTips: '验证码发送成功,请注意查收',
     updateSuccTips: '密码修改成功,快去登录吧~'
+  },
+  router: {
+    login: '登录'
   }
 };

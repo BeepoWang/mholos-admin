@@ -43,7 +43,7 @@ interface Permission {
   code: string
   name: string
   component: string
-  type: string
+  type: menuType
   url: string
   icon: string
   childNodes?: Permission[]

@@ -5,7 +5,7 @@
       <el-form-item prop="username">
         <el-input
           v-model="signInForm.username"
-          :placeholder="t('login.usernamePlaceholder')"
+          :placeholder="t('login.emailPlaceholder')"
           autocomplete="off"
           clearable
           :prefix-icon="User"
@@ -90,10 +90,10 @@ const login = (formEl: FormInstance | undefined) => {
       if (res.responseCode === 0) {
         ElMessage.success(t('login.succTips'));
         router.push({ path: '/' });
+        buttonLoading.value = false;
       }
     } catch (error) {
       console.log('error', error);
-    } finally {
       buttonLoading.value = false;
     }
   });

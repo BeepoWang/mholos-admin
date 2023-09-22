@@ -57,5 +57,8 @@ export default {
     resetSuccTips: 'Password reset successful, go log in now~',
     sendCodeSuccTips: 'The verification code was successfully sent. Please check it carefully',
     updateSuccTips: 'Password modification successful, go log in now~'
+  },
+  router: {
+    login: 'Login'
   }
 };

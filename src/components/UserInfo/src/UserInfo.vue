@@ -4,10 +4,12 @@ import PersonalSetting from './components/PersonalSetting.vue';
 import { useI18n } from '@/hooks/useI18n';
 import { useRouter } from 'vue-router';
 import { useStorage } from '@/hooks/useStorage';
+import { useAuthStore } from '@/store/modules/auth';
 
 const { t } = useI18n();
 const { clear } = useStorage();
 const { replace } = useRouter();
+const authStore = useAuthStore();
 
 const updateVisible = ref(false);
 const settingVisible = ref(false);
@@ -30,6 +32,7 @@ const loginOut = () => {
   })
     .then(async () => {
       clear();
+      authStore.logout();
       replace('/login');
     })
     .catch(() => {});

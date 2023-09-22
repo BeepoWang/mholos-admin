@@ -28,11 +28,13 @@ module.exports = {
     'no-unexpected-multiline': 'error', // 禁止空余的多行
     'no-useless-escape': 'off', // 禁止不必要的转义字符
     'no-undef': 'off', // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
+    'no-empty-pattern': 'off',
 
     // typeScript (https://typescript-eslint.io/rules)
     '@typescript-eslint/no-explicit-any': 'off', // 禁止使用any类型
     '@typescript-eslint/ban-ts-ignore': 'off', // 禁止使用@ts-ignore注释
     '@typescript-eslint/no-non-null-assertion': 'off', // 禁止使用非空断言
+    '@typescript-eslint/ban-types': 'off',
 
     // eslint-plugin-vue (https://eslint.vuejs.org/rules/)
     'vue/multi-word-component-names': 'off', // 要求组件名称始终为 “-” 链接的单词
@@ -43,4 +45,4 @@ module.exports = {
     // prettier (https://prettier.io/docs/en/options.html)
     'prettier/prettier': [0, { endOfLine: 'auto', semi: false }]
   }
-}
+};

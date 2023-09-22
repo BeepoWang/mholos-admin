@@ -49,9 +49,10 @@ module.exports = {
       // 不允许未知的选择器
       true,
       {
-        ignorePseudoClasses: ['global', 'v-deep', 'deep'] // 忽略属性，修改element默认样式的时候能使用到
+        ignorePseudoClasses: ['global', '::v-deep', 'deep', 'v-deep'] // 忽略属性，修改element默认样式的时候能使用到
       }
     ],
+    'selector-pseudo-element-no-unknown': null,
     'order/properties-order': [
       'position',
       'top',
@@ -201,4 +202,4 @@ module.exports = {
       'speak'
     ]
   }
-}
+};

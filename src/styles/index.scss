@@ -1,14 +1,22 @@
 @import './reset';
 @import './mixin';
 @import './variables';
+@import 'element-plus/theme-chalk/dark/css-vars.css';
 
 :root {
-  --transition-time-02: 0.2s;
-  --top-header-hover-color: #f6f6f6;
-  --top-header-text-color: 'inherit';
+  --left-menu-max-width: 200px;
+  --left-menu-min-width: 74px;
 
   --logo-height: 50px;
+  --top-header-hover-color: #f6f6f6;
+  --top-header-text-color: 'inherit';
   --top-tool-height: var(--logo-height);
+
+  --tags-view-height: 35px;
+
+  --app-content-padding: 20px;
+  --app-content-bg-color: #f5f7f9;
+  --transition-time-02: 0.2s;
 }
 
 html body,

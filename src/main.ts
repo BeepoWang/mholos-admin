@@ -12,9 +12,9 @@ const setupAll = async () => {
   const app = createApp(App);
 
   await setupI18n(app);
-  setupRouter(app);
   setupStore(app);
   setupElementPlus(app);
+  setupRouter(app);
 
   app.mount('#app');
 };

@@ -1,25 +1,29 @@
 import { fetchUserInfo } from '@/api/auth';
 import { store } from '../index';
 import { fetchLogin } from '@/api/login';
+import { useStorage } from '@/hooks/useStorage';
+
+const { getStorage, setStorage } = useStorage();
 
 interface AuthState {
   token: string;
   refreshToken: string;
   tokenType: string;
-  header: string;
+  headerKey: string;
   userInfo: UserInfo;
 }
 
 export const useAuthStore = defineStore('Auth', {
   state: (): AuthState => {
     return {
-      token: '',
-      refreshToken: '',
-      tokenType: '',
-      header: '',
+      token: getStorage('token') || '',
+      refreshToken: getStorage('refreshToken') || '',
+      tokenType: getStorage('tokenType') || '',
+      headerKey: getStorage('headerKey') || '',
       userInfo: {} as UserInfo
     };
   },
+  persist: true,
   getters: {
     getToken(): string {
       return this.token;
@@ -30,8 +34,8 @@ export const useAuthStore = defineStore('Auth', {
     getTokenType(): string {
       return this.tokenType;
     },
-    getHeaderType(): string {
-      return this.header;
+    getHeaderKey(): string {
+      return this.headerKey;
     },
     getUserInfo(): UserInfo {
       return this.userInfo;
@@ -40,18 +44,23 @@ export const useAuthStore = defineStore('Auth', {
   actions: {
     setToken(token: string) {
       this.token = token;
+      setStorage('token', this.token);
     },
     setRefreshToken(refreshToken: string) {
       this.refreshToken = refreshToken;
+      setStorage('refreshToken', this.refreshToken);
     },
-    setHeader(header: string) {
-      this.header = header;
+    setHeader(headerKey: string) {
+      this.headerKey = headerKey;
+      setStorage('header', this.headerKey);
     },
     setTokenType(tokenType: string) {
       this.tokenType = tokenType;
+      setStorage('tokenType', this.tokenType);
     },
     setUserInfo(userInfo: UserInfo) {
       this.userInfo = userInfo;
+      setStorage('userInfo', this.userInfo);
     },
     async userLogin(params: LoginParams) {
       const res = await fetchLogin(params);
@@ -77,10 +86,15 @@ export const useAuthStore = defineStore('Auth', {
       }
     },
 
-    logout() {}
+    logout() {
+      this.setHeader('');
+      this.setToken('');
+      this.setRefreshToken('');
+      this.setTokenType('');
+    }
   }
 });
 
-export const useAthStoreWithOut = () => {
+export const useAuthStoreWithOut = () => {
   return useAuthStore(store);
 };

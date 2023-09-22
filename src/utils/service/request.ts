@@ -1,4 +1,4 @@
-import { useAthStoreWithOut } from '@/store/modules/auth';
+import { useAuthStoreWithOut } from '@/store/modules/auth';
 import axios, { AxiosInstance } from 'axios';
 import { addPending, refreshToken, removePending, showErrorInfo } from './tools';
 import { MAxiosOpt, MAxiosRequestConfig, MAxiosResponse, MResponse } from './type';
@@ -26,9 +26,9 @@ class Request {
           addPending(requestConfig);
         }
         // 设置token
-        const authStore = useAthStoreWithOut();
-        const headerKey = authStore.header || 'Authorization';
-        requestConfig.headers[headerKey] = `${authStore.tokenType} ${authStore.token}`;
+        const authStore = useAuthStoreWithOut();
+        const headerKey = authStore.getHeaderKey || 'Authorization';
+        requestConfig.headers[headerKey] = `${authStore.getTokenType} ${authStore.getToken}`;
         return requestConfig;
       },
       (error) => {
@@ -49,7 +49,7 @@ class Request {
           if (res.responseCode === 400) {
             // TODO: token 过期处理
             console.log('token 过期处理');
-            const authStore = useAthStoreWithOut();
+            const authStore = useAuthStoreWithOut();
             authStore.setTokenType('');
             responseData.config.headers.Authorization = '';
             const config = await refreshToken(responseData.config);
