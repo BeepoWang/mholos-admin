@@ -13,6 +13,7 @@ interface AppState {
   logo: boolean;
   pageLoading: boolean;
   locale: boolean;
+  uniqueOpened: boolean;
   currentSize: ComponentSize;
   sizeMap: ComponentSize[];
   title: string;
@@ -23,15 +24,16 @@ interface AppState {
 export const useAppStore = defineStore('App', {
   state: (): AppState => {
     return {
-      mobile: false,
-      collapse: false,
-      fullScreen: true,
-      fixedHeader: true,
-      tagsView: false,
-      pageLoading: false,
-      logo: true,
-      size: true,
-      locale: true,
+      mobile: false, // 是否移动端
+      collapse: false, // 是否折叠菜单
+      fullScreen: true, // 是否展示全屏
+      fixedHeader: true, // 是否固定header
+      tagsView: false, // 是否展示tagsView
+      pageLoading: false, // 路由跳转loading
+      logo: true, // 是否展示logo
+      size: true, // 是否展示 size
+      locale: true, // 是否展示国际化
+      uniqueOpened: true, // 是否只保持一个子菜单的展开
       title: import.meta.env.VITE_APP_TITLE,
       sizeMap: ['default', 'large', 'small'],
       currentSize: getStorage('default') || 'default',
@@ -74,6 +76,9 @@ export const useAppStore = defineStore('App', {
     },
     getPageLoading(): boolean {
       return this.pageLoading;
+    },
+    getUniqueOpened(): boolean {
+      return this.uniqueOpened;
     }
   },
   actions: {
@@ -114,6 +119,9 @@ export const useAppStore = defineStore('App', {
     },
     setPageLoading(pageLoading: boolean) {
       this.pageLoading = pageLoading;
+    },
+    setUniqueOpened(uniqueOpened: boolean) {
+      this.uniqueOpened = uniqueOpened;
     }
   },
   persist: true

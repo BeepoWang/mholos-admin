@@ -1,9 +1,9 @@
+import { isUrl } from './is';
+
 const modules = import.meta.glob('../views/**/*.{vue,tsx}');
 
 /* Layout */
 export const Layout = () => import('@/layout/Layout.vue');
-
-console.log('modules', modules);
 
 export function getComponentName(url: string) {
   if (!url || !url.indexOf('/')) return url;
@@ -15,7 +15,6 @@ export function getComponentName(url: string) {
 
 export const getComponent = (item: Permission) => {
   const path = `../views/${item.url}.vue` || `../views/${item.url}.tsx`;
-  console.log('path', path);
   if (item.type === 'F') return;
   if (item.type === 'M') return Layout;
   if (item.type === 'C') return modules[path];
@@ -44,4 +43,10 @@ export const routerGenerator = (routerMap: Permission[]): AppRouteRecordRaw[] =>
 
       return currentRouter;
     });
+};
+
+export const pathResolve = (parentPath: string, path: string) => {
+  if (isUrl(path)) return path;
+  const childPath = path.startsWith('/') || !path ? path : `/${path}`;
+  return `${parentPath}${childPath}`.replace(/\/\//g, '/').trim();
 };

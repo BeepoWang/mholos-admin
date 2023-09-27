@@ -3,6 +3,7 @@ import { useAppStore } from '@/store/modules/app';
 import { ElScrollbar } from 'element-plus';
 import ToolHeader from './ToolHeader.vue';
 import AppContent from './AppContent.vue';
+import { Menu } from '@/components/Menu';
 
 const appStore = useAppStore();
 
@@ -19,7 +20,7 @@ export const useRenderLayout = () => {
       <>
         <div
           class={[
-            'layout-sidebar absolute top-0 left-0 h-gull layout-border__right',
+            'absolute top-0 left-0 h-full layout-border__right',
             { '!fixed z-300': mobile.value }
           ]}
         >
@@ -28,13 +29,15 @@ export const useRenderLayout = () => {
               class={[
                 'bg-[var(--left-menu-bg-color)] relative',
                 {
-                  'pl-0': mobile.value && collapse.value,
+                  '!pl-0': mobile.value && collapse.value,
                   'w-[var(--left-menu-min-width)]': collapse.value,
                   'w-[var(--left-menu-max-width)]': !collapse.value
                 }
               ]}
+              style="transition: all var(--transition-time-02);"
             ></Logo>
           ) : undefined}
+          <Menu class={[{ '!h-[calc(100%-var(--logo-height))]': logo.value }]}></Menu>
         </div>
         <div
           class={[

@@ -42,6 +42,8 @@ export const createRouteGuards = (router: Router) => {
 
     const userDetail = await authStore.getUserDetail();
     console.log('router guard ==>', userDetail);
+
+    // console.log('menu generator ==>',permissionStore.generatorMenu())
     permissionStore.generatorRouter(userDetail);
     permissionStore.getAddRouters.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);

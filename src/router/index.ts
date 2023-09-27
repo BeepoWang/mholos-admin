@@ -20,6 +20,7 @@ export const constantRouter: AppRouteRecordRaw[] = [
         name: '404',
         component: () => import('@/views/error/404.vue'),
         meta: {
+          hidden: true,
           title: '404'
         }
       }
@@ -41,6 +42,7 @@ export const constantRouter: AppRouteRecordRaw[] = [
     component: Layout,
     redirect: '/error/404',
     meta: {
+      hidden: true,
       title: '错误页面',
       alwaysShow: true
     },
@@ -50,6 +52,7 @@ export const constantRouter: AppRouteRecordRaw[] = [
         component: () => import('@/views/error/404.vue'),
         name: '404Demo',
         meta: {
+          hidden: true,
           title: '404'
         }
       }
