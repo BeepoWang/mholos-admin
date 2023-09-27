@@ -19,12 +19,15 @@ import { LocaleDropdown } from '@/components/LocaleDropdown';
 import { SizeDropdown } from '@/components/SizeDropdown';
 import { UserInfo } from '@/components/UserInfo';
 import { useAppStore } from '@/store/modules/app';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 const appStore = useAppStore();
 const fullScreen = computed(() => appStore.getFullScreen);
 const size = computed(() => appStore.getSize);
 const layout = computed(() => appStore.getLayout);
 const locale = computed(() => appStore.getLocale);
+const breadcrumb = computed(() => appStore.getBreadcrumb);
+console.log(breadcrumb);
 
 export default defineComponent({
   name: 'ToolHeader',
@@ -35,6 +38,7 @@ export default defineComponent({
           {layout.value !== 'top' ? (
             <div class="h-full flex items-center">
               {layout.value !== 'cutMenu' ? <Collapse class="custom-hover"></Collapse> : undefined}
+              {breadcrumb.value ? <Breadcrumb class="<md:hidden"></Breadcrumb> : undefined}
             </div>
           ) : undefined}
           <div class="h-full flex items-center">

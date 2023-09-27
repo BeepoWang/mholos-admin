@@ -11,6 +11,8 @@ declare module 'vue' {
     Collapse: typeof import('./../src/components/Collapse/src/Collapse.vue')['default']
     copy: typeof import('./../src/components/Menu/src/Menu copy.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']

@@ -14,6 +14,8 @@ interface AppState {
   pageLoading: boolean;
   locale: boolean;
   uniqueOpened: boolean;
+  breadcrumb: boolean; // 面包屑
+  breadcrumbIcon: boolean; // 面包屑图标
   currentSize: ComponentSize;
   sizeMap: ComponentSize[];
   title: string;
@@ -30,6 +32,8 @@ export const useAppStore = defineStore('App', {
       fixedHeader: true, // 是否固定header
       tagsView: false, // 是否展示tagsView
       pageLoading: false, // 路由跳转loading
+      breadcrumb: true,
+      breadcrumbIcon: true,
       logo: true, // 是否展示logo
       size: true, // 是否展示 size
       locale: true, // 是否展示国际化
@@ -79,6 +83,12 @@ export const useAppStore = defineStore('App', {
     },
     getUniqueOpened(): boolean {
       return this.uniqueOpened;
+    },
+    getBreadcrumb(): boolean {
+      return this.breadcrumb;
+    },
+    getBreadcrumbIcon(): boolean {
+      return this.breadcrumbIcon;
     }
   },
   actions: {
