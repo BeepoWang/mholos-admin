@@ -4,6 +4,8 @@ import { ElScrollbar } from 'element-plus';
 import ToolHeader from './ToolHeader.vue';
 import AppContent from './AppContent.vue';
 import { Menu } from '@/components/Menu';
+import { TagsView } from '@/components/TagsView';
+import { setCssVar } from '@/utils';
 
 const appStore = useAppStore();
 
@@ -13,6 +15,16 @@ const fixedHeader = computed(() => appStore.getFixedHeader);
 const mobile = computed(() => appStore.getMobile);
 const logo = computed(() => appStore.getLogo);
 const pageLoading = computed(() => appStore.getPageLoading);
+watch(
+  () => tagsView.value,
+  (v) => {
+    console.log('tagsView.value', v);
+    setCssVar('--tags-view-height', v ? '35px' : '0px');
+  },
+  {
+    immediate: true
+  }
+);
 
 export const useRenderLayout = () => {
   const renderClassic = () => {
@@ -82,6 +94,9 @@ export const useRenderLayout = () => {
                   }
                 ]}
               ></ToolHeader>
+              {tagsView.value ? (
+                <TagsView class="layout-border__bottom layout-border__top"></TagsView>
+              ) : undefined}
             </div>
             <AppContent></AppContent>
           </ElScrollbar>

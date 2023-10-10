@@ -12,19 +12,21 @@ export const constantRouter: AppRouteRecordRaw[] = [
     name: 'Home',
     component: Layout,
     meta: {
-      hidden: true
-    },
-    children: [
-      {
-        path: '/404',
-        name: '404',
-        component: () => import('@/views/error/404.vue'),
-        meta: {
-          hidden: true,
-          title: '404'
-        }
-      }
-    ]
+      title: '首页',
+      hidden: true,
+      affix: false
+    }
+    // children: [
+    //   {
+    //     path: '/404',
+    //     name: '404',
+    //     component: () => import('@/views/error/404.vue'),
+    //     meta: {
+    //       hidden: true,
+    //       title: '404'
+    //     }
+    //   }
+    // ]
   },
   {
     path: '/login',
@@ -60,7 +62,7 @@ export const constantRouter: AppRouteRecordRaw[] = [
   }
 ];
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_PUBLIC_PATH),
   routes: constantRouter as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 })

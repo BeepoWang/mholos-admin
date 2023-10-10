@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { useAppStore } from '@/store/modules/app';
+import { useTagsViewStore } from '@/store/modules/tagsView';
 
 const appStore = useAppStore();
 
 const tagsView = computed(() => appStore.getTagsView);
 const layout = computed(() => appStore.getLayout);
 const fixedHeader = computed(() => appStore.getFixedHeader);
+
+const tagsViewStore = useTagsViewStore();
+
+const getCaches = computed((): string[] => {
+  return tagsViewStore.getCachedViews;
+});
 </script>
 <template>
   <section
@@ -30,7 +37,7 @@ const fixedHeader = computed(() => appStore.getFixedHeader);
   >
     <router-view>
       <template #default="{ Component, route }">
-        <KeepAlive>
+        <KeepAlive :include="getCaches">
           <Component :is="Component" :key="route.fullPath"></Component>
         </KeepAlive>
       </template>

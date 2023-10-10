@@ -65,3 +65,44 @@ export function transformRoutesToMenus(routes: AppRouteRecordRaw[]): MenuItem[] 
   });
   return menus;
 }
+
+//删除按钮节点
+export function generateNewTree(treeData: any[]) {
+  const newTree: any[] = [];
+
+  for (let i = 0; i < treeData.length; i++) {
+    const currentNode = treeData[i];
+    if (currentNode.type !== 'F') {
+      const newNode = {
+        ...currentNode
+      };
+      if (currentNode.childNodes && currentNode.childNodes.length > 0) {
+        newNode.childNodes = generateNewTree(currentNode.childNodes);
+      }
+      newTree.push(newNode);
+    }
+  }
+
+  return newTree;
+}
+
+//
+export function findChildNode(treeData: string | any[], targetId: any): any {
+  for (let i = 0; i < treeData.length; i++) {
+    const currentNode = treeData[i];
+
+    if (currentNode.id === targetId) {
+      return currentNode; // 找到目标子节点，返回它
+    }
+
+    if (currentNode.childNodes && currentNode.childNodes.length > 0) {
+      const foundNode = findChildNode(currentNode.childNodes, targetId);
+
+      if (foundNode) {
+        return foundNode; // 在子节点中找到目标子节点，返回它
+      }
+    }
+  }
+
+  return null; // 没有找到目标子节点
+}

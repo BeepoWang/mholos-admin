@@ -5,6 +5,7 @@ import { store } from '../index';
 const { getStorage, setStorage } = useStorage();
 
 interface AppState {
+  nameSpace: string;
   collapse: boolean;
   fullScreen: boolean;
   mobile: boolean;
@@ -26,11 +27,12 @@ interface AppState {
 export const useAppStore = defineStore('App', {
   state: (): AppState => {
     return {
+      nameSpace: 'mholosAdmin',
       mobile: false, // 是否移动端
       collapse: false, // 是否折叠菜单
       fullScreen: true, // 是否展示全屏
       fixedHeader: true, // 是否固定header
-      tagsView: false, // 是否展示tagsView
+      tagsView: true, // 是否展示tagsView
       pageLoading: false, // 路由跳转loading
       breadcrumb: true,
       breadcrumbIcon: true,
